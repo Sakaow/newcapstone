@@ -1,0 +1,13 @@
+$base-color: #171738;
+$text-color: #fff;
+
+header {
+  display: flex;
+  justify-content: center;
+  background-color: $base-color;
+  color: $text-color;
+  min-height: 80px;
+  padding: 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}

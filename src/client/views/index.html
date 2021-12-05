@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel App</title>
+</head>
+<body>
+    <header>
+        <h1>Travel App</h1>
+    </header>
+    <main>
+        <div class="plan">
+            <h2>Plan your trip</h2>
+            <form method="post">
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" name="destination" id="destination" placeholder="Destination">
+                </div>
+                <div class="form-group">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" name="startDate" id="startDate">
+                </div>
+                <div class="form-group">
+                    <label for="endDate">End Date</label>
+                    <input type="date" name="endDate" id="endDate">
+                </div>           
+                
+                <button type="submit" name="plan">Save Trip</button>
+                <button type="submit" name="plan">Remove trip</button>
+                
+        </div>
+        <div class="placeimage">
+            <img src="../images/travel.jpg" alt="travel">
+        </div>
+
+        <div class="content">
+            <h3>My trip to: [city name]</h3>
+            <h3>Departing: [date]</h3>
+            <p>Typical weather is:</p>
+            <p>high - 46, Low - 35</p>
+            <p>Mostly cloudy throughout of the day</p>
+        </div>
+        
+    </main>
+    <footer> Travel App FEND capstone project</footer>
+</body>
+</html>

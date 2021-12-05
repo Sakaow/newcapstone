@@ -1,0 +1,16 @@
+body {
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  flex: 2;
+}
+
+section {
+  max-width: 800px;
+  margin: 50px auto;
+}

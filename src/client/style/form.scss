@@ -1,0 +1,68 @@
+$base-color: #171738;
+$text-color: #fff;
+
+.input-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(250, 120, 100, 0.6);
+  border-radius: 3px;
+  min-width: auto;
+  min-height: 200px;
+  font-size: 1rem;
+
+  form {
+    border-radius: 3px;
+    padding: 1.5rem;
+  }
+
+  label {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  .myinput {
+    min-height: 50px;
+  }
+
+  .mybutton {
+    background: $base-color;
+    color: $text-color;
+    min-height: 50px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+}
+.err_message {
+  // background: black;
+  font-size: 2rem;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+input {
+  padding: 5px 20px;
+  width: 100%;
+  line-height: 16px;
+  margin: 20px 0;
+  font-size: 1rem;
+}
+
+.output-info {
+  display: flex;
+  // justify-content: center;
+  flex-direction: column;
+  // align-items: center;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 3px;
+  min-height: 200px;
+  padding: 20px;
+  background: rgba(45, 3, 182, 0.5);
+}
+
+.display {
+  color: $text-color;
+  font-size: 1.5rem;
+}

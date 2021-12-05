@@ -1,0 +1,17 @@
+$base-color: #171738;
+$text-color: #fff;
+
+footer {
+  background-color: $base-color;
+  opacity: 0.5;
+  min-height: 50px;
+}
+
+h3 {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  align-self: center;
+  color: $text-color;
+  padding: 40px;
+}
