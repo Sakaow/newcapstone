@@ -1,21 +1,28 @@
-const dotenv = require("dotenv")
-dotenv.config()
+const dotenv = require("dotenv");
+dotenv.config();
 
-const path = require("path")
-const express = require("express")
-const fetch = require("node-fetch")
-let projectData = {}
-
-const app = express()
+const path = require("path");
+const express = require("express");
+const cors = require("cors");
+// const fetch = require("node-fetch");
+const port = process.env.PORT || 5000;
+const projectData = {};
+const app = express();
+const { response } = require("express");
+app.use(cors()); // Cross Origin Resource Sharing
 
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
+// Built-in middleware to handles form data (urlencoded)
+app.use(express.urlencoded({ extended: false }));
+// built-in middleware to handle json data
+app.use(express.json());
+// app.use(bodyParser.urlencoded({extended: false}))
+// app.use(bodyParser.json())
 
-const cors = require("cors")
-const { response } = require("express")
-app.use(cors())
 
+
+// serve static files
+// app.use(express.static('src/client'))
 app.use(express.static('dist'))
 
 app.get('/', function (req, res) {
@@ -23,29 +30,19 @@ app.get('/', function (req, res) {
     res.sendFile(path.resolve('src/server/index.html'));
 })
 
-app.listen(8080, function () {
-    console.log('Example app listening on port 8080!')
-})
-
-
 app.get('/all', function sendData(request,response){
     response.send(projectData)
 });
 
 
-app.post('/vactionData', addData);
-function addData(req, res) {
+app.post('/tripData', function addData(req, res) {
     let data = req.body;
-    console.log('server side data ', data)
-    projectData['lattitude'] = data.lattitude;
-    projectData['longitutde'] = data.longitutde;
-    projectData['city'] = data.city;
-    projectData['image'] = data.image;
-    projectData['country'] = data.country;
-    projectData['description'] = data.description;
-
+    console.log('Server POST data ', data)
+    projectData['data'] = data;
+    
     res.send(projectData);
-}
+});
 
+app.listen(port, () => console.log(`Listening on port ${port}`));
 
 module.exports = app

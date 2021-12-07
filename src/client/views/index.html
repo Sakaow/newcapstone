@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel App</title>
 </head>
+
 <body>
     <header>
         <h1>Travel App</h1>
     </header>
     <main>
-        <div class="plan">
+        <article class="plan">
             <h2>Plan your trip</h2>
             <form method="post">
-                <div class="form-group">
-                    <label for="destination">Destination</label>
-                    <input type="text" name="destination" id="destination" placeholder="Destination">
-                </div>
-                <div class="form-group">
-                    <label for="startDate">Start Date</label>
-                    <input type="date" name="startDate" id="startDate">
-                </div>
-                <div class="form-group">
-                    <label for="endDate">End Date</label>
-                    <input type="date" name="endDate" id="endDate">
-                </div>           
-                
-                <button type="submit" name="plan">Save Trip</button>
-                <button type="submit" name="plan">Remove trip</button>
-                
-        </div>
-        <div class="placeimage">
-            <img src="../images/travel.jpg" alt="travel">
-        </div>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input type="text" name="destination" id="destination" placeholder="Destination">
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <input type="date" name="startDate" id="startDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <input type="date" name="endDate" id="endDate">
+                    </div>
 
-        <div class="content">
-            <h3>My trip to: [city name]</h3>
-            <h3>Departing: [date]</h3>
-            <p>Typical weather is:</p>
-            <p>high - 46, Low - 35</p>
-            <p>Mostly cloudy throughout of the day</p>
-        </div>
-        
+                    <button type="submit" name="plan">Save Trip</button>
+                    <button type="submit" name="plan">Remove trip</button>
+                </fieldset>
+            </form>
+        </article>
+        <article class="trips">
+            <div class="placeimage">
+                <img src="https://media.istockphoto.com/photos/model-airplane-and-a-globe-picture-id1209943630?k=20&m=1209943630&s=612x612&w=0&h=iffYPbYzhVEjy8K86ZCNVBOW7PzWByhFVboKkEL5anA=" alt="travel">
+                
+            </div>
+
+            <div class="content">
+                <h3>My trip to: [city name]</h3>
+                <h3>Departing: [date]</h3>
+                <p>Typical weather is:</p>
+                <p>high - 46, Low - 35</p>
+                <p>Mostly cloudy throughout of the day</p>
+            </div>
+        </article>
     </main>
     <footer> Travel App FEND capstone project</footer>
 </body>
+
 </html>
