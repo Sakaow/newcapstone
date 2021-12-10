@@ -18,7 +18,7 @@ module.exports = {
         open: true, // open the browser
         hot: true,
         watchFiles: [path.resolve(__dirname, 'src/client/index.js')],
-        publicPath: '/',
+        
     },
     module: {
         rules: [
