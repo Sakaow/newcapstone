@@ -9,7 +9,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[contenthash].js',
-        assetModuleFilename: '[name][ext]',
+        assetModuleFilename: 'src/client/images/[name][ext]',
         clean: true,
     },
     devServer: {
@@ -17,7 +17,8 @@ module.exports = {
         port: 5001, // default port is 8080        
         open: true, // open the browser
         hot: true,
-        watchFiles: [path.resolve(__dirname, 'src/client/index.js')]
+        watchFiles: [path.resolve(__dirname, 'src/client/index.js')],
+        publicPath: '/',
     },
     module: {
         rules: [
