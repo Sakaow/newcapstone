@@ -1,68 +1,80 @@
 $base-color: #171738;
-$text-color: #fff;
+$text-color: rgb(247, 244, 244);
+$bg-color: #f2f2f2;
+$color: rgba(122, 122, 124, 0.5);
 
-.input-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: rgba(250, 120, 100, 0.6);
+form {
   border-radius: 3px;
-  min-width: auto;
-  min-height: 200px;
+  background-color: $bg-color;
+  padding: 1rem;
+  margin: 1.5rem;
+}
+
+// Destination input text
+#input-info {
+  border-radius: 3px;
+  min-width: 50%;
   font-size: 1rem;
+  border: 1px solid $color;
 
-  form {
-    border-radius: 3px;
-    padding: 1.5rem;
-  }
-
-  label {
-    margin-top: 10px;
-    font-weight: bold;
-  }
-
-  .myinput {
-    min-height: 50px;
-  }
-
-  .mybutton {
-    background: $base-color;
-    color: $text-color;
-    min-height: 50px;
-    text-transform: uppercase;
-    text-align: center;
+  input[type='text'],
+  select {
+    padding: 1rem;
+    display: inline-block;
+    border-radius: 4px;
+    box-sizing: border-box;
   }
 }
-.err_message {
-  // background: black;
-  font-size: 2rem;
-  color: red;
-  font-weight: bold;
-  text-align: center;
+
+// Date input
+#date-info {
+  border: 1px solid $color;
+  input[type='date'] {
+    padding: 1rem;
+    display: inline-block;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
 }
 
-input {
-  padding: 5px 20px;
+// Button submit
+button[type='submit'] {
   width: 100%;
-  line-height: 16px;
-  margin: 20px 0;
-  font-size: 1rem;
-}
-
-.output-info {
-  display: flex;
-  // justify-content: center;
-  flex-direction: column;
-  // align-items: center;
+  background-color: #4caf50;
   font-weight: bold;
-  font-size: 1rem;
-  border-radius: 3px;
-  min-height: 200px;
+  text-transform: uppercase;
+  color: $text-color;
   padding: 20px;
-  background: rgba(45, 3, 182, 0.5);
+  // margin: 18px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.display {
+button[type='submit']:hover {
+  background-color: #a6caa8;
+  color: #000;
+}
+
+// Button remove
+.remove {
+  // display: none;
+  margin-top: 18px;
+}
+
+button[type='button'] {
+  width: 100%;
+  background-color: #af4c4c;
+  font-weight: bold;
+  text-transform: uppercase;
   color: $text-color;
-  font-size: 1.5rem;
+  padding: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type='button']:hover {
+  background-color: #cf9a9a;
+  color: #000;
 }

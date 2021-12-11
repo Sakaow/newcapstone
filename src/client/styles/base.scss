@@ -1,16 +1,40 @@
+$bg-color: #f2f2f2;
+$shadow-color: #ffb6c1;
+$color: rgba(238, 133, 20, 0.94);
+
 body {
-  display: flex;
   font-family: 'Poppins', sans-serif;
+  background-color: lightgray;
+  height: 100%;
+}
+
+h2 {
+  display: block;
+  color: $color;
+  font-size: 1.5rem;
+  text-align: center;
+  text-shadow: 2px 2x #ffb6c1;
+  text-decoration-line: underline;
+}
+
+.container {
+  display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 100%;
 }
 
-main {
-  flex: 2;
+.trips {
+  display: flex;
+  flex-direction: row;
+  // display: none;
 }
 
-section {
-  max-width: 800px;
-  margin: 50px auto;
+div {
+  border-radius: 5px;
+  background-color: $bg-color;
+  padding: 20px;
+  margin: 10px 15px;
 }

@@ -13,11 +13,11 @@ app.use(cors()); // Cross Origin Resource Sharing
 
 const bodyParser = require('body-parser');
 // Built-in middleware to handles form data (urlencoded)
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
 // built-in middleware to handle json data
-app.use(express.json());
-// app.use(bodyParser.urlencoded({extended: false}))
-// app.use(bodyParser.json())
+// app.use(express.json());
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 
 
 
