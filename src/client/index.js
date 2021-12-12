@@ -7,6 +7,6 @@ import './styles/form.scss'
 import './styles/header.scss'
 
 
-// export components here
+// import images here
 import './images/travel.jpg'
 
