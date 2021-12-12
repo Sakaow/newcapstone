@@ -1,14 +1,22 @@
-$base-color: #171738;
+$base-color: #382f17;
 $text-color: #fff;
+@import 'base.scss';
 
 header {
-  display: flex;
-  justify-content: center;
+  grid-area: head;
   background-color: $base-color;
-  color: $text-color;
-  min-height: 80px;
-  padding: 30px;
   font-size: 1.5rem;
   font-weight: bold;
+  letter-spacing: 2px;
+  min-width: 50px;
+  min-height: 50px;
+}
+
+header > h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   text-transform: uppercase;
+  color: $text-color;
+  padding: 1.5rem;
 }

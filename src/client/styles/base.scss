@@ -4,8 +4,26 @@ $color: rgba(238, 133, 20, 0.94);
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: lightgray;
+  letter-spacing: 1px;
   height: 100%;
+  background-color: $bg-color;
+  background: rgb(238, 174, 202);
+  background: linear-gradient(
+    90deg,
+    rgba(238, 174, 202, 0.5) 0%,
+    rgba(148, 187, 233, 0.5) 100%
+  );
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr auto-fill 1fr;
+  grid-template-areas:
+    'head head'
+    'aside main'
+    'foot foot';
+  grid-gap: 10px;
 }
 
 h2 {
@@ -17,24 +35,22 @@ h2 {
   text-decoration-line: underline;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-  height: 100%;
+// Plan section
+.plan {
+  grid-area: aside;
 }
 
 .trips {
-  display: flex;
-  flex-direction: row;
+  grid-area: main;
   // display: none;
 }
 
-div {
-  border-radius: 5px;
-  background-color: $bg-color;
-  padding: 20px;
-  margin: 10px 15px;
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
 }
