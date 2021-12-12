@@ -15,7 +15,8 @@
         </header>
         <div class="container">
             <section class="plan">
-                <form method="post">
+                <form >
+                <!-- <form onsubmit="return Client.handleSubmit(event)"> -->
                     <h2>Your Trip Plan</h2>
                     <fieldset>
                         <div class="form-group" id="input-info">
@@ -31,11 +32,12 @@
                             <input type="date" name="endDate" id="endDate" size="40">
                         </div>
                         <div class="button">
-                            <button type="submit" name="save">Save Trip</button> <br>
-                            <button type="button" name="remove" class="remove">Remove Trip</button>
+                            <button type="submit" name="save" id="saveBtn">Save Trip</button> <br>
+                            <button type="button" name="remove" class="remove" id="deleteBtn">Remove Trip</button>
                         </div> <!-- end of button -->
                     </fieldset>
                 </form>
+                <div class="error-message"></div>
             </section>
             <section class="trips">
                 <img src="./src/client/images/travel.jpg" alt="travel baggage">
