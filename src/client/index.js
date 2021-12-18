@@ -1,5 +1,6 @@
 // import js files here
-// import { handleSubmit } from './js/formHandler'
+import { tripWeatherAndImage } from './js/formHandler'
+import { validateDate } from './js/validateDate'
 
 import './styles/resets.scss'
 import './styles/base.scss'
@@ -14,5 +15,9 @@ import './images/travel.jpg'
 // handleSubmit();
 
 // export components here
-// exports = { handleSubmit }
+
+export {
+    tripWeatherAndImage,
+    validateDate
+}
 
