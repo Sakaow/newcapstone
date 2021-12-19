@@ -6,7 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     mode: 'development',
     devtool: "source-map",
-    entry: './src/client/index.js',
+    // resolve the regeneratorRuntime is not defined error
+    entry: ['regenerator-runtime/runtime.js','./src/client/index.js'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[contenthash].js',

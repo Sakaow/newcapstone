@@ -17,10 +17,15 @@ Register an account at MeaningCloud API and get API key.
 
 - [MeaningCloud](https://www.meaningcloud.com/)
 
-Create a `.env` file at the root of your project and put your api key in it.
+Create a config file in `src/client/js/config.js` and put your api keys in to it.
 
 ```
-API_KEY=YOUR_API_KEY
+export const config = {
+    wApiKey:'your_weatherbit_api_key',
+    pApiKey:'your_pixabay_api_key',
+    geoname: 'Yourname',
+}
+
 ```
 
 To hide your API KEY from uploaded it to git repository then put the `.env` file into the `.gitignore` file.

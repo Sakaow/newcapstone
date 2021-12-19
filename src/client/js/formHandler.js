@@ -1,16 +1,16 @@
 import moment from 'moment';
 import { validateDate } from './validateDate';
-
+import { config } from './config';
 
 // store data
 const travelData = {};
 // reference save form element
 const saveTripBtn = document.querySelector('#saveBtn');
 
-// API keys
-const wApiKey = process.env.API_KEY_WEATHERBIT;
-const pApiKey = process.env.API_PIXABAY;
-const geoname = process.env.API_GEONAMES;
+// the api keys are stored in config.js file
+const wApiKey = config.wApiKey;
+const pApiKey = config.pApiKey;
+const geoname = config.geoname;
 
 // URLs
 // fetch city name from geonames
@@ -27,7 +27,7 @@ saveTripBtn.addEventListener('click', tripWeatherAndImage);
 export async function tripWeatherAndImage(e) {
     e.preventDefault();
     // get form data
-    let destination = document.querySelector('#destination').value;
+    let destination = document.querySelector('#destination').value.trim();    
     let startDate = document.querySelector('#startDate').value;
     let endDate = document.querySelector('#endDate').value;
 
@@ -36,11 +36,29 @@ export async function tripWeatherAndImage(e) {
     // validate form data
     if (destination === '' || startDate === '' || endDate === '') {
         
-        return error.innerHTML = 'Please fill out all fields';
+        error.innerHTML = 'Please fill out all fields';
+        error.style.display = 'block';        
+        error.style.color = 'red';
+        error.style.fontSize = '1.3rem';
+
+        //set timeout to hide error message
+        setTimeout(function() {
+            error.style.display = 'none';
+        } , 3000);
+
     } else if (startDate > endDate) {
         
-        return errorMsg.innerHTML = 'Start date must be before end date';
-    }
+        errorMsg.innerHTML = 'Start date must be before end date';
+        // errorMsg.style.display = 'block';
+        // errorMsg.textAlign = 'center';
+        errorMsg.style.color = 'red';
+        errorMsg.style.fontSize = '1.3rem';
+
+        //set timeout to hide error message
+        setTimeout(function() {
+            errorMsg.style.display = 'none';
+        } , 3000);
+    } else {
 
     // format dates
     startDate = moment(startDate).format('YYYY-MM-DD');
@@ -48,17 +66,18 @@ export async function tripWeatherAndImage(e) {
 
     // Client is a library to store data to webpack config file
     // Client.validateDate(startDate, endDate);
-    validateDate(startDate, endDate);
+    let daysOfTrip = validateDate(startDate, endDate);
     // store form data in object
     travelData.destination = destination;
     travelData.startDate = startDate;
     travelData.endDate = endDate;
-
-    await cityNameFromGeo(destination);
-    await weatherData(travelData.lat, travelData.lon, travelData.countryCode, travelData.cityName);
-    await postData(travelData);
+    travelData.daysOfTrip = daysOfTrip;
+    
+    await cityNameFromGeo(travelData.destination);
+    // await weatherData(travelData.lat, travelData.lon, travelData.countryCode, travelData.cityName);    
     await imageData(travelData.cityName);
-
+    await postData(travelData);
+    }
 }
     
 
@@ -75,9 +94,8 @@ export async function tripWeatherAndImage(e) {
         travelData['lon'] = lon;
         travelData['cityName'] = cityName;
         travelData['countryCode'] = countryCode;
-        console.log(travelData);
+        // console.log(travelData);
 
-        // return travelData;
         // fetch weather data from weatherbit
         return await weatherData(lat, lon, countryCode, cityName);
     }
@@ -92,13 +110,20 @@ export async function tripWeatherAndImage(e) {
         let days = dataJson.data;
         let daysNum = Number(days.length-1);
         // select specified weather data from weatherbit
-        let description = days.map(day => day.weather.description);
-        let temp = days.map(day => day.temp);
-        let minTemp = days.map(day => day.min_temp);
-        let maxTemp = days.map(day => day.max_temp);
-        let humidity = days.map(day => day.rh);
-        let windSpeed = days.map(day => day.wind_spd);
-        let icons = days.map(day => day.weather.icon);
+        let description = days[daysNum].weather.description;
+        let temp = dataJson.data[0].temp;
+        let minTemp = dataJson.data[0].min_temp;
+        let maxTemp = dataJson.data[0].max_temp;
+        let humidity = dataJson.data[0].rh;
+        let windSpeed = dataJson.data[0].wind_spd;
+        let icons = dataJson.data[0].weather.icon;
+        // let temp = days.map(day => day[0].temp);
+        // let minTemp = days.map(day => day[0].min_temp);
+        // let maxTemp = days.map(day => day[0].max_temp);
+        // let humidity = days.map(day => day[0].rh);
+        // let windSpeed = days.map(day => day[0].wind_spd);
+        // let icons = days.map(day => day[0].weather.icon);
+        
         // store weather data in global object
         travelData['desciption'] = description;
         travelData['temp'] = temp;
@@ -108,7 +133,7 @@ export async function tripWeatherAndImage(e) {
         travelData['windSpeed'] = windSpeed;
         travelData['icons'] = icons;
         
-        console.log(travelData);
+        // console.log(travelData);
 
         return travelData;
     }
@@ -130,7 +155,7 @@ export async function tripWeatherAndImage(e) {
 const postData = async function (data) {
     console.log(data);
     // default options
-    const response = await fetch("http://localhost:5001/tripData", {
+    const response = await fetch("http://localhost:8081/tripData", {
         method: 'POST',
         credentials: 'same-origin',
         headers: {

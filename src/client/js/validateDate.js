@@ -6,10 +6,17 @@ export function validateDate(startdate, endDate) {
     let diff = end.diff(start, "days");
     if (diff < 0) {
         return false;
-    } else if (diff >= 7) {
+    } else if (diff > 7) {
         let error = document.querySelector(".error-message");
-        return error.innerHTML = "Date must be within 7 days";
+        error.innerHTML = "Date must be within 7 days";
+        error.style.display = 'block';
+        error.textAlign = 'center';
+        error.style.color = 'red';
+        error.style.fontSize = '1.3rem';
+        setTimeout(function() {
+            error.style.display = 'none';
+        } , 3000);
     }
 
-    return true;
+    return diff;
 }
