@@ -37,8 +37,19 @@ app.get('/all', function sendData(request,response){
 app.post('/tripData', function addData(req, res) {
     let data = req.body;
     console.log('Server POST data ', data)
-    projectData['data'] = data;
-    
+    // projectData['data'] = data;
+    projectData['cityName'] = data.cityName;
+    projectData['countryName'] = data.countryName;
+    projectData['startDate'] = data.startDate;
+    projectData['endDate'] = data.endDate;
+    projectData['daysOfTrip'] = data.daysOfTrip;
+    projectData['temp'] = data.temp;
+    projectData['minTemp'] = data.minTemp;
+    projectData['maxTemp'] = data.maxTemp;
+    projectData['icons'] = data.icon;
+    projectData['description'] = data.description;
+    projectData['imageDestination'] = data.imageDestination;
+    console.log('Server object data ', projectData)
     res.send(projectData);
 });
 

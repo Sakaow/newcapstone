@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -48,7 +48,7 @@ module.exports = {
     // Plugins
     plugins: [
         //remove/cleans build folders and unused assets
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
             template: "./src/client/views/index.html",

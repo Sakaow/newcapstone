@@ -5,7 +5,6 @@ import { validateDate } from './js/validateDate'
 import { updateUI } from './js/updateUI'
 import { config } from './js/config'
 
-updateUI();
 import './styles/resets.scss'
 import './styles/base.scss'
 import './styles/footer.scss'
