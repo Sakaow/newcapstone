@@ -16,7 +16,8 @@ export function validateDate(startdate, endDate) {
         setTimeout(function() {
             error.style.display = 'none';
         } , 3000);
-    }
-
-    return diff;
+    } else {
+        return diff;
+    }   
+    
 }

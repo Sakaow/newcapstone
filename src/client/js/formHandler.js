@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { validateDate } from './validateDate';
 import { config } from './config';
+import { updateUI } from './updateUI';
 
 // store data
 const travelData = {};
@@ -60,23 +61,24 @@ export async function tripWeatherAndImage(e) {
         } , 3000);
     } else {
 
-    // format dates
-    startDate = moment(startDate).format('YYYY-MM-DD');
-    endDate = moment(endDate).format('YYYY-MM-DD');
+        // format dates
+        startDate = moment(startDate).format('DD-MM-YYYY');
+        endDate = moment(endDate).format('DD-MM-YYYY');
 
-    // Client is a library to store data to webpack config file
-    // Client.validateDate(startDate, endDate);
-    let daysOfTrip = validateDate(startDate, endDate);
-    // store form data in object
-    travelData.destination = destination;
-    travelData.startDate = startDate;
-    travelData.endDate = endDate;
-    travelData.daysOfTrip = daysOfTrip;
-    
-    await cityNameFromGeo(travelData.destination);
-    // await weatherData(travelData.lat, travelData.lon, travelData.countryCode, travelData.cityName);    
-    await imageData(travelData.cityName);
-    await postData(travelData);
+        // Client is a library to store data to webpack config file
+        // Client.validateDate(startDate, endDate);
+        let daysOfTrip = validateDate(startDate, endDate);
+        // store form data in object
+        travelData.destination = destination;
+        travelData.startDate = startDate;
+        travelData.endDate = endDate;
+        travelData.daysOfTrip = daysOfTrip;
+
+        await cityNameFromGeo(travelData.destination);
+        // await weatherData(travelData.lat, travelData.lon, travelData.countryName, travelData.cityName);    
+        await imageData(travelData.cityName);
+        await postData(travelData);
+        await updateUI();
     }
 }
     
@@ -87,32 +89,31 @@ export async function tripWeatherAndImage(e) {
         const data = await response.json();
         const lat = Math.floor(data.geonames[0].lat);
         const lon = Math.floor(data.geonames[0].lng);
-        const countryCode = data.geonames[0].countryCode;
+        const countryName = data.geonames[0].countryName;
         const cityName = data.geonames[0].name;
         // store all local variables in global object        
         travelData['lat'] = lat;
         travelData['lon'] = lon;
         travelData['cityName'] = cityName;
-        travelData['countryCode'] = countryCode;
+        travelData['countryName'] = countryName;
         // console.log(travelData);
 
         // fetch weather data from weatherbit
-        return await weatherData(lat, lon, countryCode, cityName);
+        return await weatherData(lat, lon, countryName, cityName);
     }
 
 
     // fetch weather data from weatherbit using lat, lon, country code, and city name from the global object
-    const weatherData = async function (lat, lon, countryCode, cityName) { 
-        // const response = await fetch(`${wURL}?lat=${lat}&lon=${lon}&city=${cityName}&country=${countryCode}&key=${wApiKey}&start_date=${travelData.startDate}&end_date=${travelData.endDate}`);
-
-        const response = await fetch(`${wURL}?lat=${lat}&lon=${lon}&city=${cityName}&country=${countryCode}&key=${wApiKey}`);
+    const weatherData = async function (lat, lon, countryName, cityName) { 
+        
+        const response = await fetch(`${wURL}?lat=${lat}&lon=${lon}&city=${cityName}&country=${countryName}&key=${wApiKey}`);
         const dataJson = await response.json();
         let days = dataJson.data;
         let daysNum = Number(days.length-1);
         // select specified weather data from weatherbit
         let description = days[daysNum].weather.description;
-        let temp = dataJson.data[0].temp;
-        let minTemp = dataJson.data[0].min_temp;
+        let temp = Math.round(dataJson.data[0].temp);
+        let minTemp = Math.round(dataJson.data[0].min_temp);
         let maxTemp = dataJson.data[0].max_temp;
         let humidity = dataJson.data[0].rh;
         let windSpeed = dataJson.data[0].wind_spd;
@@ -145,7 +146,7 @@ export async function tripWeatherAndImage(e) {
         const data = await response.json();
         // store image data in global object
         travelData['imageDestination'] = data.hits[0].largeImageURL;
-        console.log(travelData.imageDestination);
+        // console.log(travelData.imageDestination);
 
         return travelData;
     }
@@ -153,9 +154,9 @@ export async function tripWeatherAndImage(e) {
 
 // post data to server
 const postData = async function (data) {
-    console.log(data);
-    // default options
+
     const response = await fetch("http://localhost:8081/tripData", {
+    // const response = await fetch("/tripData", {
         method: 'POST',
         credentials: 'same-origin',
         headers: {

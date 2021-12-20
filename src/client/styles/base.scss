@@ -54,7 +54,7 @@ h2 {
 
 .trips {
   grid-area: main;
-  // display: none;
+  display: none;
 }
 
 img {
@@ -65,7 +65,8 @@ img {
   border-radius: 4px;
 }
 
-span {
+span,
+h3 {
   font-size: 1.2rem;
   font-weight: bold;
 }

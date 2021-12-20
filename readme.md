@@ -17,12 +17,12 @@ Register an account at MeaningCloud API and get API key.
 
 - [MeaningCloud](https://www.meaningcloud.com/)
 
-Create a config file in `src/client/js/config.js` and put your api keys in to it.
+Create a config file in `src/client/js/config.js` and place your api keys in.
 
 ```
 export const config = {
-    wApiKey:'your_weatherbit_api_key',
-    pApiKey:'your_pixabay_api_key',
+    wApiKey: 'your_weatherbit_api_key',
+    pApiKey: 'your_pixabay_api_key',
     geoname: 'Yourname',
 }
 

@@ -31,9 +31,8 @@ app.get('/', function (req, res) {
 })
 
 app.get('/all', function sendData(request,response){
-    response.send(projectData)
+    response.send(projectData);
 });
-
 
 app.post('/tripData', function addData(req, res) {
     let data = req.body;
