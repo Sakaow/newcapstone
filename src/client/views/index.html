@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#317EFB"/>
+    <meta name="theme-color" content="#317EFB" />
     <title>Travel App</title>
 </head>
 
@@ -16,8 +16,7 @@
         </header>
         <div class="container">
             <section class="plan">
-                <form >
-                <!-- <form onsubmit="return Client.handleSubmit(event)"> -->
+                <form>
                     <h2>Your Trip Plan</h2>
                     <fieldset>
                         <div class="form-group" id="input-info">
@@ -34,32 +33,28 @@
                         </div>
                         <div class="button">
                             <button type="submit" name="save" id="saveBtn">Save Trip</button> <br>
-                            <button type="button" name="remove" class="remove" id="deleteBtn">Remove Trip</button>
+                            <button type="button" name="remove" class="remove" id="removeBtn">Remove Trip</button>
                         </div> <!-- end of button -->
                     </fieldset>
                 </form>
                 <div id="error"></div>
                 <div class="error-message"></div>
             </section>
+            
             <section class="trips">
-                <img id="city-img" src="./src/client/images/travel.jpg" alt="travel baggage">
-                
+                <div><span>Your Trips</span></div>
+                <div id="city-img">
+                    <img src="./src/client/images/travel.jpg" alt="travel baggage">
+                </div>
                 <div class="content" id="display">
-                    <h3>Your Trips</h3>
                     <div id="city-des"></div>
                     <div id="date-start"></div>
                     <div id="date-end"></div>
                     <div id="days-of-trip"></div>
                     <div id="temparature"></div>
-                    <img id="weather-icon"></img>
                     <div id="low-high"></div>
                     <div id="detail"></div>
-                    
-                    <!-- <p> <span>My trip to:</span> [city name]</p>
-                    <p> <span>Departing:</span> [date]</p>
-                    <p>Typical weather is:</p>
-                    <p>high - 46, Low - 35</p>
-                    <p>Mostly cloudy throughout of the day</p> -->
+
                 </div>
             </section>
         </div>

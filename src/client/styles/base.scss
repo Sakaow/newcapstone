@@ -1,7 +1,7 @@
 $base-color: #382f17;
 $bg-color: #f2f2f2;
 $shadow-color: #ffb6c1;
-$color: rgba(238, 133, 20, 0.94);
+$color: rgba(238, 133, 20, 1);
 $text-color: #fff;
 
 body {
@@ -23,9 +23,13 @@ body {
   grid-template-rows: 1fr auto 1fr;
   grid-template-areas:
     'head head head'
-    'aside main main'
+    'main main main'
     'foot foot foot';
   grid-gap: 10px;
+}
+
+.container {
+  grid-area: main;
 }
 
 h2 {
@@ -41,53 +45,57 @@ h2 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  // justify-content: flex-start;
-  align-content: center;
-  align-items: center;
   flex-wrap: wrap;
   height: 100%;
 }
-// Plan section
-.plan {
-  grid-area: aside;
-}
 
-.trips {
-  grid-area: main;
-  display: none;
-}
-
-img {
-  // display: block;
-  height: 70%;
-  width: 70%;
-  margin: 10px 0;
-  border-radius: 4px;
-}
-
-span,
-h3 {
+span {
   font-size: 1.2rem;
   font-weight: bold;
 }
 
 p {
-  display: block;
-  line-height: 1.2rem;
+  line-height: 1.3rem;
 }
 
 .trips {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100vw;
+  padding: 1.5rem;
+}
+
+#city-img {
+  object-fit: cover;
+}
+
+img {
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  max-width: 50vw;
   align-items: center;
-  // background-color: #9e9e9d;
-  background-color: $bg-color;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 4px;
+  border-radius: 15px;
+  margin: 1.5rem 0;
 }
 
 .content {
-  text-align: center;
-  margin: 1.5rem;
+  margin-left: 2rem;
+  padding-top: 1.5rem;
+}
+
+@media screen and (max-width: 600px) {
+  .trips {
+    width: 100vw;
+    padding: 1.5rem;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .content {
+    margin-left: 0;
+    padding-top: 0;
+  }
 }

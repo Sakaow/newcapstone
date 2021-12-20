@@ -50,8 +50,6 @@ export async function tripWeatherAndImage(e) {
     } else if (startDate > endDate) {
 
         errorMsg.innerHTML = 'Start date must be before end date';
-        // errorMsg.style.display = 'block';
-        // errorMsg.textAlign = 'center';
         errorMsg.style.color = 'red';
         errorMsg.style.fontSize = '1.3rem';
 
@@ -63,17 +61,15 @@ export async function tripWeatherAndImage(e) {
     } else {
 
         // format dates
-        startDate = moment(startDate).format('DD-MM-YYYY');
-        endDate = moment(endDate).format('DD-MM-YYYY');
+        startDate = moment(startDate).format('LL');
+        endDate = moment(endDate).format('LL');
 
-        // Client is a library to store data to webpack config file
-        // Client.validateDate(startDate, endDate);
         let daysOfTrip = validateDate(startDate, endDate);
-        // store form data in object
+                
         travelData.destination = destination;
         travelData.startDate = startDate;
         travelData.endDate = endDate;
-        travelData.daysOfTrip = daysOfTrip;
+        travelData.daysOfTrip = Number(daysOfTrip);        
 
         await cityNameFromGeo(travelData.destination);
         // await weatherData(travelData.lat, travelData.lon, travelData.countryName, travelData.cityName);    
@@ -81,6 +77,11 @@ export async function tripWeatherAndImage(e) {
         await postData(travelData);
         await updateUI();
     }
+
+    // after clicking save button, the remove button will be displayed
+    const remove = document.querySelector('#removeBtn');
+    remove.style.display = 'block';
+        
 }
 
 
@@ -115,9 +116,9 @@ const weatherData = async function (lat, lon, countryName, cityName) {
     let description = days[daysNum].weather.description;
     let temp = Math.round(dataJson.data[0].temp);
     let minTemp = Math.round(dataJson.data[0].min_temp);
-    let maxTemp = dataJson.data[0].max_temp;
+    let maxTemp = Math.round(dataJson.data[0].max_temp);
     let icon = dataJson.data[0].weather.icon;
-    
+
 
     // store weather data in global object
     travelData['description'] = description;

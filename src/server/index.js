@@ -43,13 +43,14 @@ app.post('/tripData', function addData(req, res) {
     projectData['startDate'] = data.startDate;
     projectData['endDate'] = data.endDate;
     projectData['daysOfTrip'] = data.daysOfTrip;
+    projectData['daysAway'] = data.daysAway;
     projectData['temp'] = data.temp;
     projectData['minTemp'] = data.minTemp;
     projectData['maxTemp'] = data.maxTemp;
     projectData['icons'] = data.icon;
     projectData['description'] = data.description;
     projectData['imageDestination'] = data.imageDestination;
-    console.log('Server object data ', projectData)
+    // console.log('Server object data ', projectData);
     res.send(projectData);
 });
 

@@ -9,11 +9,11 @@ const updateUI = async function() {
         document.getElementById("city-des").innerHTML = `<p><span>Trip to: </span>${resData.cityName}, ${resData.countryName}</p>`;
         document.getElementById("date-start").innerHTML = `<p><span>Departing: </span>${resData.startDate}</p>`;
         document.getElementById("date-end").innerHTML = `<p><span>Returning: </span>${resData.endDate}</p>`;
-        document.getElementById("days-of-trip").innerHTML = `<p>Days of trip: </span>${resData.daysOfTrip} days</p>`;
-        document.getElementById("temparature").innerHTML = `<p>Weather: ${resData.temp}°C </p>`;
-        document.getElementById("weather-icon").src = resData.icons;
-        document.getElementById("low-high").innerHTML = `<p>High: </span>${resData.maxTemp}°C  Low: ${resData.minTemp}°C </p>`;
-        document.getElementById("detail").innerHTML = `<p>Description: ${resData.description} </p>`;
+        document.getElementById("days-of-trip").innerHTML = `<p>Days of trip: ${resData.daysOfTrip} days</p>`;
+        
+        document.getElementById("temparature").innerHTML = `<p>Weather: ${resData.temp}°C </p>`;        
+        document.getElementById("low-high").innerHTML = `<p>H: ${resData.maxTemp}°C  L: ${resData.minTemp}°C </p>`;
+        document.getElementById("detail").innerHTML = `<p>${resData.description} </p>`;
     } catch (err) {
         console.log("Something went wrong while update UI", err);
     }
