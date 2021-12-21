@@ -48,11 +48,11 @@ To install packages
 
 - Run the development:
 
-`npm run build-dev`
+`npm run dev`
 
 - Run the production:
 
-`npm run build-prod`
+`npm run prod`
 
 - Start the server:
 

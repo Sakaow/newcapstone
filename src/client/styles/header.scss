@@ -1,4 +1,9 @@
-@import 'base.scss';
+@import url('base.scss');
+$base-color: #382f17;
+$bg-color: #f2f2f2;
+$shadow-color: #ffb6c1;
+$color: rgba(238, 133, 20, 1);
+$text-color: #fff;
 
 header {
   grid-area: head;
