@@ -10,7 +10,15 @@ module.exports = {
     // resolve the regeneratorRuntime is not defined error
     entry: './src/client/index.js',
     optimization: {
-        minimizer: [new TerserPlugin({}),],
+        minimizer: [new TerserPlugin({})],
+        splitChunks: {
+            chunks: 'all',
+        },
+    },
+    performance: {
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
     },
     output: {
         path: path.resolve(__dirname, 'dist'),

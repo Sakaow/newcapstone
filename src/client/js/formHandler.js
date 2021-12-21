@@ -76,6 +76,15 @@ export async function tripWeatherAndImage(e) {
         await imageData(travelData.cityName);
         await postData(travelData);
         await updateUI();
+
+        // store data in local storage
+        localStorage.setItem('travelData', JSON.stringify(travelData));
+
+        // clear form
+        document.querySelector('#destination').value = '';
+        document.querySelector('#startDate').value = '';
+        document.querySelector('#endDate').value = '';
+
     }
 
     // after clicking save button, the remove button will be displayed
