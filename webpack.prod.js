@@ -10,7 +10,8 @@ module.exports = {
     // resolve the regeneratorRuntime is not defined error
     entry: './src/client/index.js',
     optimization: {
-        minimizer: [new TerserPlugin({})],
+        minimize: true,
+        minimizer: [new TerserPlugin({}), '...'],
         splitChunks: {
             chunks: 'all',
         },

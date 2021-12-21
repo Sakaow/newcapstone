@@ -5,7 +5,7 @@ const updateUI = async function() {
         const resData = await response.json();
         console.log(resData);
         // update the content of the UI
-        document.querySelector("#city-img").src = resData.imageDestination;
+        document.querySelector("#place").src = resData.imageDestination;
         document.getElementById("city-des").innerHTML = `<p><span>Trip to: </span>${resData.cityName}, ${resData.countryName}</p>`;
         document.getElementById("date-start").innerHTML = `<p><span>Departing: </span>${resData.startDate}</p>`;
         document.getElementById("date-end").innerHTML = `<p><span>Returning: </span>${resData.endDate}</p>`;
