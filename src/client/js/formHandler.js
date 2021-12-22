@@ -78,7 +78,9 @@ export async function tripWeatherAndImage(e) {
         await updateUI();
 
         // store data in local storage
-        localStorage.setItem('travelData', JSON.stringify(travelData));
+        localStorage.setItem('city', JSON.stringify(travelData.cityName));
+        localStorage.setItem('start', JSON.stringify(travelData.startDate));
+        localStorage.setItem('end', JSON.stringify(travelData.endDate));
 
         // clear form
         document.querySelector('#destination').value = '';
