@@ -9,8 +9,8 @@ const updateUI = async function() {
         document.getElementById("city-des").innerHTML = `<p><span>Trip to: </span>${resData.cityName}, ${resData.countryName}</p>`;
         document.getElementById("date-start").innerHTML = `<p><span>Departing: </span>${resData.startDate}</p>`;
         document.getElementById("date-end").innerHTML = `<p><span>Returning: </span>${resData.endDate}</p>`;
-        document.getElementById("days-of-trip").innerHTML = `<p>Days of trip: ${resData.daysOfTrip} days</p>`;
-        // document.querySelector("#iconImg").src = `./src/client/images/${resData.icon}.svg`;
+        document.getElementById("days-of-trip").innerHTML = `<p>Your trip is <span>${resData.daysAway}</span> days away</p> and <span>${resData.daysOfTrip}</span> days long`;
+        
         document.querySelector("#iconImg").src = `./src/client/images/${resData.icon}.svg`;
         document.getElementById("temparature").innerHTML = `<em>${resData.temp}°C </em>`;        
         document.getElementById("low-high").innerHTML = `<p>High: ${resData.maxTemp}°C  Low: ${resData.minTemp}°C </p>`;

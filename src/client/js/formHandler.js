@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { validateDate } from './validateDate';
+import { daysAway, validateDate } from './validateDate';
 import { config } from './config';
 import { updateUI } from './updateUI';
 
@@ -65,11 +65,13 @@ export async function tripWeatherAndImage(e) {
         endDate = moment(endDate).format("MMM Do YY");
 
         let daysOfTrip = validateDate(startDate, endDate);
+        let numOfDayAway = daysAway(startDate);
                 
         travelData.destination = destination;
         travelData.startDate = startDate;
         travelData.endDate = endDate;
-        travelData.daysOfTrip = Number(daysOfTrip);        
+        travelData.daysOfTrip = Number(daysOfTrip);  
+        travelData.daysCount = Number(numOfDayAway);      
 
         await cityNameFromGeo(travelData.destination);
         // await weatherData(travelData.lat, travelData.lon, travelData.countryName, travelData.cityName);    

@@ -38,7 +38,7 @@ app.post('/tripData', function addData(req, res) {
     projectData['startDate'] = data.startDate;
     projectData['endDate'] = data.endDate;
     projectData['daysOfTrip'] = data.daysOfTrip;
-    projectData['daysAway'] = data.daysAway;
+    projectData['daysAway'] = data.daysCount;
     projectData['temp'] = data.temp;
     projectData['minTemp'] = data.minTemp;
     projectData['maxTemp'] = data.maxTemp;
