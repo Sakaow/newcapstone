@@ -61,8 +61,8 @@ export async function tripWeatherAndImage(e) {
     } else {
 
         // format dates
-        startDate = moment(startDate).format('LL');
-        endDate = moment(endDate).format('LL');
+        startDate = moment(startDate).format("MMM Do YY");
+        endDate = moment(endDate).format("MMM Do YY");
 
         let daysOfTrip = validateDate(startDate, endDate);
                 
