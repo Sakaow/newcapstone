@@ -148,12 +148,18 @@ const weatherData = async function (lat, lon, countryName, cityName) {
 
 // fetch image from pixabay
 const imageData = async function (cityName) {
+    
     const response = await fetch(`${pURL}?key=${pApiKey}&q=${cityName}&image_type=photo&pretty=true`);
     try {
         const data = await response.json();
-        // store image data in global object
-        travelData['imageDestination'] = data.hits[0].largeImageURL;
-        // console.log(travelData.imageDestination);
+        let imageDestination = data.hits[0].webformatURL;
+
+        if (imageDestination === 'undefined') {
+            imageDestination = `no image found`;
+        } else {
+        // store image in global object
+            travelData['imageDestination'] = data.hits[0].webformatURL;
+        }
         return travelData;
 
     } catch (err) {
