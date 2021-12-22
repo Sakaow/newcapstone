@@ -47,7 +47,7 @@ app.post('/tripData', function addData(req, res) {
     projectData['temp'] = data.temp;
     projectData['minTemp'] = data.minTemp;
     projectData['maxTemp'] = data.maxTemp;
-    projectData['icons'] = data.icon;
+    projectData['icon'] = data.icon;
     projectData['description'] = data.description;
     projectData['imageDestination'] = data.imageDestination;
     // console.log('Server object data ', projectData);
