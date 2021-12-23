@@ -13,9 +13,7 @@ app.use(cors()); // Cross Origin Resource Sharing
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
-
-
+app.use(bodyParser.json());
 
 // serve static files
 app.use(express.static('dist'));
@@ -23,7 +21,18 @@ app.use(express.static('dist'));
 app.get('/', function (req, res) {
     // res.sendFile(path.resolve('dist/index.html'))
     res.sendFile(path.resolve('src/server/index.html'));
-})
+});
+
+// testing endpoint with supertest
+app.get('/connected', function (req, res) {
+    res.json({
+        author: "Sakaowduan",
+        title: "travelplan",
+        description: "A travelplan app",
+        provider: "udacity",
+        server: "connected"
+    });
+});
 
 app.get('/all', function sendData(request,response){
     response.send(projectData);

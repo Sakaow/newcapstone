@@ -1,4 +1,4 @@
-import { validateDate, daysAway } from "../client/js/validateDate";
+import { validateDate } from "../client/js/validateDate";
 
 // test for validateDate function
 test("validateDate function", () => {
