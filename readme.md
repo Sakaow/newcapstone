@@ -28,7 +28,7 @@ export const config = {
 
 ```
 
-To hide your API KEY from uploaded it to git repository then put the `.env` file into the `.gitignore` file.
+To hide your API KEY from uploaded it to git repository then put the `config.js` file into the `.gitignore` file.
 
 ### Installation
 
