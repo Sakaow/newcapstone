@@ -75,7 +75,7 @@ export async function tripWeatherAndImage(e) {
 
         await cityNameFromGeo(travelData.destination);
         // await weatherData(travelData.lat, travelData.lon, travelData.countryName, travelData.cityName);    
-        await imageData(travelData.cityName);
+        await imageData(travelData.cityName, travelData.countryName);
         await postData(travelData);
         await updateUI();
 
@@ -92,8 +92,8 @@ export async function tripWeatherAndImage(e) {
     }
 
     // after clicking save button, the remove button will be displayed
-    const remove = document.querySelector('#removeBtn');
-    remove.style.display = 'block';
+    // const remove = document.querySelector('#removeBtn');
+    // remove.style.display = 'block';
         
 }
 
@@ -147,24 +147,36 @@ const weatherData = async function (lat, lon, countryName, cityName) {
 
 
 // fetch image from pixabay
-const imageData = async function (cityName) {
-    
-    const response = await fetch(`${pURL}?key=${pApiKey}&q=${cityName}&image_type=photo&pretty=true`);
-    try {
-        const data = await response.json();
-        let imageDestination = data.hits[0].webformatURL;
+const imageData = async function (cityName, contryName) {
+    let countryQuery =`&q=${contryName}&orientation=horizontal&image_type=photo`;    
+    let cityQuery = `&q=${cityName}&orientation=horizontal&image_type=photo&pretty=true`; 
+    let url = `${pURL}?key=${pApiKey}${cityQuery}`;
+    let imageDestination = '';
 
-        if (imageDestination === 'undefined') {
-            imageDestination = `no image found`;
-        } else {
-        // store image in global object
-            travelData['imageDestination'] = data.hits[0].webformatURL;
-        }
-        return travelData;
+    await fetch(url)
+        .then(respCity => respCity.json())
+        .then(data => {
+            imageDestination = data.hits[0].largeImageURL;
+            // store image in global object
+            travelData['imageDestination'] = imageDestination;
+        }).catch(err => { 
+            console.log(err);
+        });
 
-    } catch (err) {
-        console.log('error', err);
+    if (imageDestination === 'undefined' || imageDestination === '') {
+        url = `${pURL}?key=${pApiKey}${countryQuery}`;
+        await fetch(url)
+            .then(respCountry => respCountry.json())
+            .then(data => {
+                imageDestination = data.hits[0].largeImageURL;
+                // store image in global object
+                travelData['imageDestination'] = imageDestination;
+            }).catch(err => { 
+                console.log(err);
+            });
     }
+        
+    return travelData;
 }
 
 
