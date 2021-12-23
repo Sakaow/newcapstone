@@ -13,9 +13,9 @@ Using webpack as a build tool
 
 - [Webpack](https://webpack.js.org/)
 
-Register an account at MeaningCloud API and get API key.
+Register an account at Weatherbit.io and get API key.
 
-- [MeaningCloud](https://www.meaningcloud.com/)
+- [weatherbit.io](https://www.weatherbit.io/account/login)
 
 Create a config file in `src/client/js/config.js` and place your api keys in.
 
