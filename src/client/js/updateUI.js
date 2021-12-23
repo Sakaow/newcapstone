@@ -11,7 +11,7 @@ const updateUI = async function() {
         document.getElementById("date-end").innerHTML = `<p><span>Returning: </span>${resData.endDate}</p>`;
         document.getElementById("days-of-trip").innerHTML = `<p>Your trip is <span>${resData.daysAway}</span> days away</p> and <span>${resData.daysOfTrip}</span> days long`;
         
-        document.querySelector("#iconImg").src = `./src/client/images/${resData.icon}.svg`;
+        document.querySelector("#iconImg").src = `./images/${resData.icon}.svg`;
         document.getElementById("temparature").innerHTML = `<em>${resData.temp}°C </em>`;        
         document.getElementById("low-high").innerHTML = `<p>High: ${resData.maxTemp}°C  Low: ${resData.minTemp}°C </p>`;
         document.getElementById("detail").innerHTML = `<p>${resData.description} </p>`;

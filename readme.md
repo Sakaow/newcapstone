@@ -25,7 +25,6 @@ export const config = {
     pApiKey: 'your_pixabay_api_key',
     geoname: 'Yourname',
 }
-
 ```
 
 To hide your API KEY from uploaded it to git repository then put the `config.js` file into the `.gitignore` file.
