@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node src/server/index.js",
+    "start": "node src/server/connect.js",
     "dev": "webpack serve --config webpack.dev.js",
     "build": "webpack build --config webpack.prod.js"
   },

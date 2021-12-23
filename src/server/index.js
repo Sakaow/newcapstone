@@ -5,7 +5,7 @@ const path = require("path");
 const express = require("express");
 const cors = require("cors");
 // const fetch = require("node-fetch");
-const port = process.env.PORT || 8081;
+// const port = process.env.PORT || 8081;
 const projectData = {};
 const app = express();
 const { response } = require("express");
@@ -58,6 +58,6 @@ app.post('/tripData', function addData(req, res) {
     res.send(projectData);
 });
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+// app.listen(port, () => console.log(`Listening on port ${port}`));
 
 module.exports = app
